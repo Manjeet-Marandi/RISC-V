@@ -21,7 +21,7 @@
 
 
 module instr_mem(
-    input [31:0] A, //should be 10 bits long I think because we have 1024 locations
+    input [31:0] A, 
     input rst,
     output [31:0] RD
     );
