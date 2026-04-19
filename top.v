@@ -92,8 +92,8 @@ wire [2:0] ALUControl_top;
     mux mux_inst_data_to_register(
         .a(ALUResult),
         .b(ReadData),
-        .s(ResultSrc), // For now we are only writing ALUResult to register file, so we can keep this 0. In future when we implement branch instructions we will change this to Branch signal
-        .c(Result) // For now we are only writing ALUResult to register file, so we can keep this as ReadData. In future when we implement branch instructions we will change this to PCPlus4
+        .s(ResultSrc),
+        .c(Result) 
     );
 
 
