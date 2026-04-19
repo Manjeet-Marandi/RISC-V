@@ -151,19 +151,3 @@ This design is synthesizable and can be implemented on FPGA devices such as:
 - Resource utilization: ~500-1000 LUTs depending on optimizations
 - Memory blocks: Uses distributed RAM for small implementations
 
-## Future Enhancements
-
-- Pipeline implementation (5-stage)
-- Additional instruction support (RV32M, RV32F extensions)
-- Interrupt handling
-- Memory management unit (MMU)
-- Cache implementation
-
-## References
-
-- [RISC-V Specification](https://riscv.org/technical/specifications/)
-- [Computer Organization and Design RISC-V Edition](https://www.amazon.com/Computer-Organization-Design-RISC-V-Architecture/dp/0128203315)
-
-## License
-
-This project is released under the MIT License. See LICENSE file for details.
