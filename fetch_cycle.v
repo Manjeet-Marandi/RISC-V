@@ -22,21 +22,21 @@
 
 module fetch_cycle(
     input clk,rst,
-    input PCSrc,
+    input PCSrcE,
     input [31:0] PCTargetE,
     output [31:0] InstrD,
-    output [31:0] PCD, PCDPlus4D
+    output [31:0] PCD, PCPlus4D
     );
 
     wire [31:0] PC_F, PCF, PCPlus4F, InstrF ; //PC_F is before the cycle, PCF is after the cycle, PCPlus4F is the output of the adder before the cycle
-
     reg [31:0] InstrF_reg, PCF_reg, PCPlus4F_reg;
+
 
     mux mux_inst_pcmux(
         .a(PCPlus4F),
         .b(PCTargetE),
-        .sel(PCSrc),
-        .out(PC_F)
+        .s(PCSrcE),
+        .c(PC_F)
     );
 
     pc pc_inst(
@@ -57,4 +57,21 @@ module fetch_cycle(
         .b(32'h4),
         .c(PCPlus4F)
     );
+
+    always @(posedge clk or negedge rst) begin
+        if(!rst) begin
+            InstrF_reg <= 32'b0;
+            PCF_reg <= 32'b0;
+            PCPlus4F_reg <= 32'b0;
+        end else begin
+            InstrF_reg <= InstrF;
+            PCF_reg <= PCF;
+            PCPlus4F_reg <= PCPlus4F;
+        end
+    end
+
+assign InstrD = InstrF_reg;
+assign PCD = PCF_reg;
+assign PCPlus4D = PCPlus4F_reg;
+
 endmodule
